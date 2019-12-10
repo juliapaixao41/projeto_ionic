@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+        <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="tituloTela">Lista Pets</ion-title>
+  </ion-toolbar>
+</ion-header>
+  <ion-content padding>
+    <ion-grid>
+      <ion-fab bottom right>
+          <ion-button size="3" class="tituloAdicionar" ion-fab color="primary" size="small" (click)="abrirPagina('cadastro-pet')">
+            <ion-icon name="add"></ion-icon>
+          </ion-button>
+        </ion-fab>
+      </ion-grid>
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card *ngFor="let item of pets">
+      <span *ngIf="!item.isEdit; else elseBlock">
+       <ion-item (click) = "abrirPagina('vacina')">
+        <ion-card-header>
+          <ion-card-title>{{item.nomeAnimal}}  </ion-card-title>
+        </ion-card-header>
+      </ion-item>
+        <ion-card-content>
+          <ion-button shape="round" color="secondary" size="small" (click)="EditPet(item)">
+            <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
+          </ion-button>
+          <ion-button shape="round" color="danger" size="small" (click)="RemovePet(item.id)">
+            <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-card-content>
+      </span>
+    <ng-template #elseBlock>
+        <ion-card-header>
+          <ion-card-title>
+            <ion-grid>
+                <ion-card-content>
+                    <ion-item>
+                      <ion-label><strong>Nome</strong></ion-label>
+                      <ion-input type="text" [(ngModel)]="item.EditNomeAnimal"></ion-input>
+                    </ion-item>
+                  </ion-card-content>
+              <ion-row>
+                <ion-col>
+                  <ion-button fill="clear" color="medium" size="small" (click)="item.isEdit = false">
+                    Cancelar
+                  </ion-button>
+                </ion-col>
+                <ion-col>
+                  <ion-button fill="outline" color="success" size="small" (click)="UpdatePet(item)">
+                    Atualizar
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-title>
+        </ion-card-header>
+      </ng-template>
+    </ion-card>
+  </ion-content>

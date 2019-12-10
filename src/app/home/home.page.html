@@ -1,14 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+
+    <div >
+      <ion-row>
+            <div class="ion-padding">
+                <h3 class="titulo">Bem vindo ao Petzonia!</h3>
+              
+            </div>
+        
+        </ion-row>
+
+        <ion-row>
+            <ion-button class="botaoComecar" color="secondary" (click)="abrirPagina('cadastro')">Cadastrar</ion-button>
+            <ion-button class="botaoComecar" color="secondary" (click)="abrirPagina('login')">Entrar</ion-button>
+        </ion-row>
+    </div>
+
 </ion-content>

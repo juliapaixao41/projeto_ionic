@@ -1,0 +1,89 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="tituloTela">Carteira de Vacinação </ion-title>
+    </ion-toolbar>
+</ion-header>
+  
+  <ion-content padding >
+      <ion-title class="tituloTela">Cadastro Vacina: </ion-title>
+    <ion-card >
+      <ion-item>
+        <ion-label floating>Data: </ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" cancelText="cancelar" doneText="ok" [(ngModel)]="data"></ion-datetime>
+      </ion-item> 
+      <ion-item>
+        <ion-label  floating>Vacina:</ion-label>
+          <ion-input type="text"  [(ngModel)]="vacina" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label  floating>Responsável:</ion-label>
+          <ion-input type="text" [(ngModel)]="responsavel"  ></ion-input>
+      </ion-item>
+      <ion-item>        
+        <ion-label floating>Repetir em: </ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" cancelText="cancelar" doneText="ok" [(ngModel)]="repetir"></ion-datetime>
+      </ion-item>
+        
+    </ion-card>
+      <ion-button  shape="round" class="botaoCadastro" color="secondary" (click)="CreateVacina(record)"  >Cadastar</ion-button>
+    <ion-row></ion-row>
+    <ion-row></ion-row>
+    
+  
+    <ion-title class="tituloTela">Detalhe Vacinas: </ion-title>
+    <ion-card *ngFor="let item of vacinas">
+        <span *ngIf="!item.isEdit; else elseBlock">
+         <ion-item (click) = "abrirPagina('vacina')">
+          <ion-card-header>
+            <ion-card-title>{{item.vacina}}</ion-card-title>
+          </ion-card-header>
+        </ion-item>
+          <ion-card-content>
+            <ion-button shape="round" color="secondary" size="small" (click)="EditVacina(item)">
+              <ion-icon size="small" slot="icon-only" name="paper"></ion-icon>
+            </ion-button>
+            <ion-button shape="round" color="danger" size="small" (click)="RemoveVacina(item.id)">
+              <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
+            </ion-button>
+          </ion-card-content>
+        </span>
+      <ng-template #elseBlock>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-grid>
+                  <ion-card-content>
+                      <ion-item>
+                        <ion-label><strong>Data:</strong></ion-label>
+                        <ion-input type="text" disabled="true" [(ngModel)]="item.EditData"></ion-input>
+                      </ion-item>
+                      <ion-item>
+                          <ion-label><strong>Vacina:</strong></ion-label>
+                          <ion-input type="text" disabled="true" [(ngModel)]="item.EditVacina"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label><strong>Responsável:</strong></ion-label>
+                            <ion-input type="text" disabled="true" [(ngModel)]="item.EditResponsavel"></ion-input>
+                          </ion-item>
+                          <ion-item>
+                              <ion-label><strong>Repetir em:</strong></ion-label>
+                              <ion-input type="text" disabled="true" [(ngModel)]="item.EditRepetir"></ion-input>
+                            </ion-item>
+                    </ion-card-content>
+                <ion-row>
+                    <ion-col>
+                        <ion-button  color="medium" size="small" (click)="item.isEdit = false">
+                          Fechar
+                        </ion-button>
+                      </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-title>
+          </ion-card-header>
+        </ng-template>
+      </ion-card>
+  </ion-content>
+  

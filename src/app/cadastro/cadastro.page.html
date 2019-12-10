@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="tituloTela">Cadastrar Usuário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding >
+  <div class="fundoCadastro">
+   
+    <ion-item>
+      <ion-label  >Dono responsável:</ion-label>
+      <ion-input type="text"  [(ngModel)]="user.nomeDono" ></ion-input>
+    </ion-item>
+  <ion-item>
+    <ion-label  >E-mail:</ion-label>
+      <ion-input type="text"[(ngModel)]="user.email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label >Senha:</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+  </ion-item> 
+  <ion-item>
+    <ion-label >Data de Nascimento </ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" cancelText="cancelar" doneText="ok" [(ngModel)]="user.dataNascimento"></ion-datetime>
+  </ion-item>
+
+    <ion-row>
+        <ion-button class="botaoCadastro" color="secondary" (click)="register(user)" [disabled]="!user.nomeDono">Criar</ion-button>
+          <ion-col size="6" offset="2">
+            
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

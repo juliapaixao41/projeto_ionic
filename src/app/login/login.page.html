@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="tituloTela">Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <div class="fundoLogin">  
+        <ion-row>
+            <ion-col size="12">
+                <label class="campoTela2" >E-mail</label>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12">
+                <input class="inputTela2"  type="email" [(ngModel)]="user.email">
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12">
+                <label class="campoTela2">Senha</label>
+        </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12">
+                <input class="inputTela2" type="password" [(ngModel)]="user.password">
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-button class="botaoLogin" color="secondary" (click)="login(user)">Entrar</ion-button>
+        </ion-row>
+    </div>
+</ion-content>

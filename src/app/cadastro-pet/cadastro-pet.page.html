@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="tituloTela">Cadastro Pet </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding >
+ 
+    <ion-item>
+      <ion-label floating >Nome do Animal:</ion-label>
+        <ion-input  type="text" [(ngModel)]="nomeAnimal" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  floating >Raça:</ion-label>
+        <ion-input type="text" [(ngModel)]="raca"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating  >Peso:</ion-label>
+        <ion-input type="number" [(ngModel)]="peso" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Porte do animal:</ion-label>
+        <ion-select placeholder="Selecionar"  [(ngModel)]="porteAnimal">
+          <ion-select-option value="1">Pequeno</ion-select-option>
+          <ion-select-option value="2">Médio</ion-select-option>
+          <ion-select-option value="3">Grande</ion-select-option>
+        </ion-select>
+    </ion-item> 
+    <ion-item>
+      <ion-label floating>Data de Nascimento:</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" cancelText="cancelar" doneText="ok" [(ngModel)]="dataNascimento" ></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Espécie</ion-label>
+        <ion-select multiple="false" placeholder="Selecionar" [(ngModel)]="especie"  >
+          <ion-select-option value="1" >Cachorro</ion-select-option>
+          <ion-select-option value="2">Gato</ion-select-option>
+          <ion-select-option value="3" >Pássaro</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Gênero</ion-label>
+        <ion-select placeholder="Selecionar" [(ngModel)]="genero" >
+          <ion-select-option value="1">Fêmea</ion-select-option>
+          <ion-select-option value="2">Macho</ion-select-option>
+        </ion-select>
+    </ion-item>
+   
+    <ion-row>
+      <ion-button expand="full" shape="round"  (click)="CreatePet(record)" [disabled]="!nomeAnimal " class="botaoCadastro" color="secondary" >Cadastrar</ion-button>
+    </ion-row>
+ 
+</ion-content>
